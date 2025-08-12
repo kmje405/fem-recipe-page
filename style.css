@@ -1,0 +1,86 @@
+@layer global {
+  /* Outfit variable font */
+  @font-face {
+    font-family: "Outfit";
+    src: url("/assets/fonts/outfit/Outfit-VariableFont_wght.ttf")
+      format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Young Serif static font */
+  @font-face {
+    font-family: "Young Serif";
+    src: url("/assets/fonts/young-serif/YoungSerif-Regular.ttf")
+      format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  :root {
+    /* ========== COLORS ========== */
+    /* Rose */
+    --c-rose-light: hsl(330, 100%, 98%);
+    --c-rose-dark: hsl(332, 51%, 32%);
+    /* Stone */
+    --c-stone-900: hsl(24, 5%, 18%);
+    --c-stone-600: hsl(30, 10%, 34%);
+    --c-stone-150: hsl(30, 18%, 87%);
+    --c-stone-100: hsl(30, 54%, 90%);
+    /* Brown */
+    --c-brown-800: hsl(14, 45%, 36%);
+    /* White */
+    --c-white: hsl(0, 0%, 100%);
+
+    /* ========== FONT FAMILIES ========== */
+    --ff-outfit: "Outfit", sans-serif;
+    --ff-young-serif: "Young Serif", serif;
+
+    /* ========== FONT WEIGHTS ========== */
+    --fw-outfit-reg: 400;
+    --fw-outfit-semi: 600;
+    --fw-outfit-bold: 800;
+
+    --fw-young-serif-reg: 400;
+
+    /* ========== FONT SIZES (px) ========== */
+    --fs-40: calc(40 / 16 * 1rem);
+    --fs-28: calc(28 / 16 * 1rem);
+    --fs-20: calc(20 / 16 * 1rem);
+    --fs-16: calc(16 / 16 * 1rem);
+
+    /* ========== LINE HEIGHTS ========== */
+    --lh-100: 100%;
+    --lh-150: 150%;
+
+    /* ========== SEMANTIC TEXT STYLES ========== */
+    /* Headings */
+    --heading-xl-font: var(--ff-young-serif);
+    --heading-xl-weight: var(--fw-young-serif-reg);
+    --heading-xl-size: var(--fs-40);
+    --heading-xl-line: var(--lh-100);
+
+    --heading-lg-font: var(--ff-young-serif);
+    --heading-lg-weight: var(--fw-young-serif-reg);
+    --heading-lg-size: var(--fs-28);
+    --heading-lg-line: var(--lh-100);
+
+    /* Body text */
+    --body-lg-font: var(--ff-outfit);
+    --body-lg-weight: var(--fw-outfit-semi);
+    --body-lg-size: var(--fs-20);
+    --body-lg-line: var(--lh-100);
+
+    --body-font: var(--ff-outfit);
+    --body-weight: var(--fw-outfit-reg);
+    --body-size: var(--fs-16);
+    --body-line: var(--lh-150);
+
+    /* Body bold */
+    --body-bold-font: var(--ff-outfit);
+    --body-bold-weight: var(--fw-outfit-bold);
+    --body-bold-size: var(--fs-16);
+    --body-bold-line: var(--lh-150);
+  }
+}
