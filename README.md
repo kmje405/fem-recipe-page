@@ -49,16 +49,16 @@ semantic HTML structure, and a mobile-first responsive approach.
 This project reinforced several important web development concepts:
 
 **Semantic HTML Structure**: Used proper semantic elements like `<article>`,
-`<section>`, `<aside>`, and `<header>` to create meaningful document structure:
+`<section>`, and `<header>` to create meaningful document structure:
 
 ```html
 <article class="recipe" aria-labelledby="recipe-title">
   <header class="recipe__intro">
     <h1 id="recipe-title" class="recipe__title">Simple Omelette Recipe</h1>
   </header>
-  <aside class="recipe__prep">
+  <section class="recipe__prep">
     <h2 class="recipe__section-title">Preparation time</h2>
-  </aside>
+  </section>
 </article>
 ```
 
