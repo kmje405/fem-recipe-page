@@ -1,5 +1,8 @@
+/* ============================= */
+/* Global layer & design tokens  */
+/* ============================= */
 @layer global {
-  /* Outfit variable font */
+  /* Fonts */
   @font-face {
     font-family: "Outfit";
     src: url("./assets/fonts/outfit/Outfit-VariableFont_wght.ttf")
@@ -8,8 +11,6 @@
     font-style: normal;
     font-display: swap;
   }
-
-  /* Young Serif static font */
   @font-face {
     font-family: "Young Serif";
     src: url("./assets/fonts/young-serif/YoungSerif-Regular.ttf")
@@ -18,69 +19,228 @@
     font-style: normal;
     font-display: swap;
   }
+
   :root {
-    /* ========== COLORS ========== */
-    /* Rose */
+    /* Colors */
     --c-rose-50: hsl(330, 100%, 98%);
     --c-rose-800: hsl(332, 51%, 32%);
-    /* Stone */
     --c-stone-900: hsl(24, 5%, 18%);
     --c-stone-600: hsl(30, 10%, 34%);
     --c-stone-150: hsl(30, 18%, 87%);
     --c-stone-100: hsl(30, 54%, 90%);
-    /* Brown */
     --c-brown-800: hsl(14, 45%, 36%);
-    /* White */
     --c-white: hsl(0, 0%, 100%);
 
-    /* ========== FONT FAMILIES ========== */
-    --ff-outfit: "Outfit", sans-serif;
-    --ff-young-serif: "Young Serif", serif;
+    /* Fonts */
+    --ff-outfit: "Outfit", system-ui, sans-serif;
+    --ff-young-serif: "Young Serif", ui-serif, Georgia, serif;
 
-    /* ========== FONT WEIGHTS ========== */
-    --fw-outfit-reg: 400;
-    --fw-outfit-semi: 600;
-    --fw-outfit-bold: 700;
+    /* Weights */
+    --fw-reg: 400;
+    --fw-semi: 600;
+    --fw-bold: 700;
 
-    --fw-young-serif-reg: 400;
+    /* Type scale */
+    --fs-40: 2.5rem; /* 40px */
+    --fs-28: 1.75rem; /* 28px */
+    --fs-20: 1.25rem; /* 20px */
+    --fs-16: 1rem; /* 16px */
 
-    /* ========== FONT SIZES (px) ========== */
-    --fs-40: calc(40 / 16 * 1rem);
-    --fs-28: calc(28 / 16 * 1rem);
-    --fs-20: calc(20 / 16 * 1rem);
-    --fs-16: calc(16 / 16 * 1rem);
+    /* Line heights */
+    --lh-tight: 1;
+    --lh-relaxed: 1.5;
 
-    /* ========== LINE HEIGHTS ========== */
-    --lh-100: 100%;
-    --lh-150: 150%;
+    /* Spacing */
+    --space-300: 0.75rem; /* 12px */
+    --space-400: 1rem; /* 16px */
+    --space-600: 1.5rem; /* 24px */
+    --space-800: 2rem; /* 32px */
 
-    /* ========== SEMANTIC TEXT STYLES ========== */
-    /* Headings */
-    --heading-xl-font: var(--ff-young-serif);
-    --heading-xl-weight: var(--fw-young-serif-reg);
-    --heading-xl-size: var(--fs-40);
-    --heading-xl-line: var(--lh-100);
-
-    --heading-lg-font: var(--ff-young-serif);
-    --heading-lg-weight: var(--fw-young-serif-reg);
-    --heading-lg-size: var(--fs-28);
-    --heading-lg-line: var(--lh-100);
-
-    /* Body text */
-    --body-lg-font: var(--ff-outfit);
-    --body-lg-weight: var(--fw-outfit-semi);
-    --body-lg-size: var(--fs-20);
-    --body-lg-line: var(--lh-100);
-
-    --body-font: var(--ff-outfit);
-    --body-weight: var(--fw-outfit-reg);
-    --body-size: var(--fs-16);
-    --body-line: var(--lh-150);
-
-    /* Body bold */
-    --body-bold-font: var(--ff-outfit);
-    --body-bold-weight: var(--fw-outfit-bold);
-    --body-bold-size: var(--fs-16);
-    --body-bold-line: var(--lh-150);
+    /* Layout */
+    --card-radius: 0.75rem;
+    --content-max: 46rem; /* ~736px */
+    --content-pad: 2.5rem; /* 40px @ tablet+ */
   }
+
+  /* Base */
+  html {
+    color-scheme: light;
+  }
+  body {
+    background: var(--c-stone-100);
+    font: var(--fw-reg) var(--fs-16) / var(--lh-relaxed) var(--ff-outfit);
+    color: var(--c-stone-600);
+    margin: 0;
+  }
+
+  p,
+  li {
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--ff-young-serif);
+    color: var(--c-brown-800);
+    line-height: var(--lh-tight);
+    margin: 0;
+  }
+
+  /* Marker color & spacing */
+  ul li::marker,
+  ol li::marker {
+    color: var(--c-rose-800);
+    font-weight: var(--fw-bold);
+  }
+
+  /* Reliable extra gap between marker and text */
+  ul li,
+  ol li {
+    padding-left: 0.5rem; /* pushes text right of bullet/number */
+  }
+}
+
+/* ============================= */
+/* Component: Recipe card        */
+/* ============================= */
+.recipe {
+  display: flex;
+  flex-direction: column;
+  background: var(--c-white);
+  max-width: var(--content-max);
+  margin-inline: auto;
+  overflow: clip;
+  border-radius: 0; /* mobile: full-bleed image look */
+}
+
+.recipe__banner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.recipe__content {
+  padding: var(--space-800);
+}
+
+.recipe__intro {
+  margin-block-end: var(--space-800);
+}
+
+.recipe__title {
+  color: var(--c-stone-900);
+  font-size: clamp(2rem, 1.6rem + 1.5vw, var(--fs-40));
+  margin-block-end: var(--space-600);
+  text-wrap: balance;
+}
+
+.recipe__summary {
+  max-width: 19.5rem; /* 312px */
+}
+
+/* Section wrapper with subtle divider */
+.recipe__ingredients,
+.recipe__instructions {
+  border-bottom: 1px solid var(--c-stone-150);
+  padding-block: var(--space-600);
+}
+.recipe__nutrition {
+  padding-block: var(--space-600);
+}
+
+.recipe__section-title {
+  font-size: var(--fs-28);
+  margin-block-end: var(--space-600);
+}
+
+/* Prep callout */
+.recipe__prep {
+  background: var(--c-rose-50);
+  padding: var(--space-600);
+  border-radius: var(--card-radius);
+  margin-block-end: var(--space-800);
+}
+
+/* Lists */
+.recipe__list {
+  margin: 0;
+  padding-left: 1.25rem;
+} /* base indent */
+.recipe__list li {
+  margin-block-end: var(--space-300);
+}
+.recipe__list--dots {
+  list-style: disc;
+}
+.recipe__list--nums {
+  list-style: decimal;
+}
+
+/* Nutrition table: clean column gap */
+.recipe__facts {
+  width: 100%;
+  border-collapse: separate; /* needed for spacing between columns */
+  border-spacing: 0; /* no row gaps */
+}
+.recipe__facts td {
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--c-stone-150);
+}
+.recipe__facts tr:last-child td {
+  border-bottom: 0;
+}
+
+.recipe__fact-key {
+  font: var(--fw-reg) var(--fs-16) / var(--lh-relaxed) var(--ff-outfit);
+  color: var(--c-stone-600);
+  padding-left: 2rem;
+  /* space between columns lives on the next cell for stability */
+}
+
+.recipe__fact-val {
+  font-weight: var(--fw-bold);
+  color: var(--c-rose-800);
+  padding-left: 1rem; /* ← consistent, reliable column gap */
+}
+
+.recipe__note {
+  margin-block-end: var(--space-600);
+}
+
+.attribution {
+  text-align: center;
+  padding: var(--space-800);
+}
+
+/* ============================= */
+/* Responsive                    */
+/* ============================= */
+
+/* Tablet (≥768px) */
+@media (min-width: 48rem) {
+  .recipe {
+    border-radius: var(--card-radius);
+    padding: var(--content-pad);
+    margin-block: 8rem;
+  }
+  .recipe__title {
+    margin-top: 1.5rem;
+  }
+  .recipe__banner {
+    border-radius: var(--card-radius);
+  }
+  .recipe__summary {
+    max-width: none;
+  }
+  .recipe__content {
+    padding: 0;
+  } /* padding now comes from card */
+}
+
+/* Desktop (≥1440px) */
+@media (min-width: 90rem) {
+  .recipe {
+    max-width: var(--content-max);
+  } /* already set; explicit for clarity */
 }
